@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("./assets//Fonts//SourceCodePro-Regular.ttf") format("ttf");
+}
+:root {
+  --light: #F2F3F4;
+  --dark-card: #212121;
+}
+body {
+  font-family: "Source Code Pro", monospace, sans-serif;
+  background-color: var(--light);
+
+}
+
+.hrefs a {
+  font-size: 0.9em;
+  display: block;
+  margin-bottom: 5px;
+}
+.hrefs fieldset {
+  height: 100%;
+}

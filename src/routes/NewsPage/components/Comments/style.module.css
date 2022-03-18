@@ -1,0 +1,67 @@
+.text {
+  font-size: 0.75em;
+  max-width: 90%;
+  line-height: 20px;
+}
+.commentAuthor {
+  font-size: 0.7em;
+  color: #a80000;
+}
+.commentContainer {
+  margin: 35px;
+  margin-bottom: 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border: 1px solid #cacaca;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  overflow-wrap: break-word;
+  animation: fadeInUp 0.9s;
+}
+.commentContainer a {
+  color: #0000a8;
+}
+.commentContainer button {
+  background: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  width: 130px;
+  height: 50px;
+}
+.container {
+  display: grid;
+  grid-template-columns: calc(100% - 50px);
+}
+.innerContainer {
+  margin-left: 55px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-sizing: border-box;
+  width: 90%;
+  overflow: hidden;
+  margin-bottom: 10px;
+  animation: fadeInUp 0.9s;
+}
+.pressed:after {
+  content: "↓";
+  font-size: 20px;
+}
+.hidden {
+  display: none;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
