@@ -71,7 +71,6 @@ const NewsPage = () => {
 
       {iscommentsLoading ? (
         <div className={style.loading}>
-          {" "}
           <Loader />
         </div>
       ) : (
