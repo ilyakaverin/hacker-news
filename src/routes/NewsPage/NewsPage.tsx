@@ -14,7 +14,7 @@ import { format } from "date-fns";
 import * as style from "./style.module.css";
 import { useEffect, useRef } from "react";
 import Loader from "../../components/Loader/Loader";
-import Comment from "./components/Comments/index";
+import Comment from "../../components/Comments/Comments";
 
 interface Story {
   id: number;

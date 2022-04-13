@@ -10,11 +10,11 @@ import {
   refreshNews,
   loadedChunk,
 } from "../../store/hackernews";
-import NewsCard from "./components/NewsCard/NewsCard";
+import NewsCard from "../NewsCard/NewsCard";
 import Loader from "../Loader/Loader";
 import cn from "classnames";
 let newsChunk = 1;
-const HackerNews = () => {
+const MainPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(newsLoading);
   const newsRedux: Array<object> = useSelector(newsData);
@@ -80,4 +80,4 @@ const HackerNews = () => {
     </div>
   );
 };
-export default HackerNews;
+export default MainPage;

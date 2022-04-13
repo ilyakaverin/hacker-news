@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import App from "./App.tsx";
-import NewsPage from "./routes/NewsPage/NewsPage.tsx";
-import NotFound from "./components/NotFound/index.tsx";
-import store from "./store";
+import App from "./App";
+import NewsPage from "./routes/NewsPage/NewsPage";
+import NotFound from "./components/NotFound/NotFound";
+import store from "./store/index";
 
 const app = document.getElementById("app");
 

@@ -1,8 +1,8 @@
 import * as style from "./style.module.css";
 import { useState } from "react";
 import cn from "classnames";
-import Loader from "../../../../components/Loader/Loader";
-import { processDeletedComments } from "../../../../service";
+import Loader from "../Loader/Loader";
+import { processDeletedComments } from "../../service";
 
 interface Story {
   text: string;

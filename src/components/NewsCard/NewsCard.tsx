@@ -7,7 +7,7 @@ const newsCard = ({ title, by, date, rating, href, id, descendants }: any) => {
   return (
     <div className={style.card}>
       <div className={style.by}>by {by}</div>
-      <a href={href} className={cn(style.title, {[style.href] : href !== undefined})}>
+      <a href={href} className={cn(style.title, {[style.href] : href !== undefined})} target="_blank">
         {title}
       </a>
       <div className={style.time}>
