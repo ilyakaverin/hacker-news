@@ -1,18 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { sliceIntoChunks } from "../service";
+import { News, State } from '../interfaces';
+import { PayloadAction } from "@reduxjs/toolkit/dist/createAction";
 
-interface Action {
-  payload: "object";
+interface HackerNewsState {
+  news: State
 }
 
-interface State {
-  name: string;
-  news: any;
-  data: ConcatArray<object>;
-  isLoading: boolean;
-  commentsLoading: boolean;
-  current: object;
-}
 export const slice = createSlice({
   name: "news",
   initialState: {
@@ -34,7 +28,7 @@ export const slice = createSlice({
       ...state,
       nextChunkLoading: true,
     }),
-    fetchNewsIDs: (state: State, action: Action) => ({
+    fetchNewsIDs: (state: State, action: PayloadAction) => ({
       ...state,
       newsIDs: action.payload,
     }),
@@ -42,24 +36,24 @@ export const slice = createSlice({
       ...state,
       commentsLoading: true,
     }),
-    fetchNewsResolve: (state: State, action: Action) => ({
+    fetchNewsResolve: (state: State, action: PayloadAction<News[]>) => ({
       ...state,
       isLoading: false,
       nextChunkLoading: false,
-      data: state.data.concat(action.payload),
+      data: [...state.data, ...action.payload],
     }),
-    fetchNewsReject: (state: State, action: Action) => ({
+    fetchNewsReject: (state: State, action: PayloadAction) => ({
       ...state,
       isLoading: false,
       data: {},
       error: action.payload,
     }),
-    fetchCommentsResolve: (state: State, action: Action) => ({
+    fetchCommentsResolve: (state: State, action: PayloadAction) => ({
       ...state,
       commentsLoading: false,
       comments: action.payload,
     }),
-    fetchCurrentResolve: (state: State, action: Action) => ({
+    fetchCurrentResolve: (state: State, action: PayloadAction) => ({
       ...state,
       isLoading: false,
       current: action.payload,
@@ -94,13 +88,13 @@ export const {
   clearNewsIDs,
 } = slice.actions;
 
-export const newsLoading = (state: State) => state.news.isLoading;
-export const newsData = (state: State) => state.news.data;
-export const storyData = (state: State) => state.news.current;
-export const commentsData = (state: State) => state.news.comments;
-export const commentsLoading = (state: State) => state.news.commentsLoading;
-export const newsIDs = (state: State) => state.news.newsIDs;
-export const loadedChunk = (state: State) => state.news.nextChunkLoading;
+export const newsLoading = (state: HackerNewsState) => state.news.isLoading;
+export const newsData = (state: HackerNewsState) => state.news.data;
+export const storyData = (state: HackerNewsState) => state.news.current;
+export const commentsData = (state: HackerNewsState) => state.news.comments;
+export const commentsLoading = (state: HackerNewsState) => state.news.commentsLoading;
+export const newsIDs = (state: HackerNewsState) => state.news.newsIDs;
+export const loadedChunk = (state: HackerNewsState) => state.news.nextChunkLoading;
 
 export const getNews =
   (id: number) => async (dispatch: Function, getState: Function) => {

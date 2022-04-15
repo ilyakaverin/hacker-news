@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import newsReducer from './hackernews.ts';
+import newsReducer from './hackernews';
 
-export default configureStore({
+const store  =  configureStore({
   reducer: {
     news: newsReducer,
   },
 });
+export default store

@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import App from "./App";
 import NewsPage from "./routes/NewsPage/NewsPage";
 import NotFound from "./components/NotFound/NotFound";
-import store from "./store/index";
+import store from "./store";
 
 const app = document.getElementById("app");
 
