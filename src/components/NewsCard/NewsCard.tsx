@@ -12,16 +12,16 @@ const newsCard = ({ title, by, date, href, id, descendants }: any) => {
       <div className={style.time}>
         {format(new Date(date * 1000), "dd MMMM yyyy H:mm")}
       </div>
-      </div>
-      <a href={href} className={cn(style.title, {[style.href] : href !== undefined})} target="_blank">
-        {title}
-      </a>
       <Link
         to={`/story/${id}`}
         className={cn(style.href, style.comments, { [style.hidden]: !descendants })}
       >
         Comments
       </Link>
+      </div>
+      <a href={href} className={cn(style.title, {[style.href] : href !== undefined})} target="_blank">
+        {title}
+      </a>
     </div>
   );
 };
