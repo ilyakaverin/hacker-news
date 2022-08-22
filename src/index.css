@@ -11,12 +11,3 @@ body {
   background-color: var(--light);
 
 }
-
-.hrefs a {
-  font-size: 0.9em;
-  display: block;
-  margin-bottom: 5px;
-}
-.hrefs fieldset {
-  height: 100%;
-}

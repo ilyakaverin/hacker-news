@@ -1,15 +1,12 @@
 .news {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 15px;
-  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
 }
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  grid-gap: 15px;
-  margin-top: 15px;
+  align-items: flex-start;
 }
 .button {
   border: 2px solid black;

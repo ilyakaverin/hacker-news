@@ -1,19 +1,18 @@
 .card {
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
   justify-content: space-between;
-  animation: fadeInUp 0.8s;
+  font-size: 0.85rem;
 }
 .card .href {
-  text-decoration: underline;
+  text-decoration: none;
   color: #0000a8;
   cursor: pointer;
   line-height: 23px;
   letter-spacing: 0.5px;
+}
+.card .href:hover {
+  text-decoration: underline;
 }
 .title {
   line-height: 25px;
@@ -21,14 +20,20 @@
 .by {
   font-size: 0.8em;
   color: #a80000;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 .time {
   font-size: 0.8em;
+  color: black
 }
 .hidden {
   display: none;
 }
-
+.comments {
+  font-size: 0.7rem;
+}
 @keyframes fadeInUp {
   from {
     opacity: 0;
