@@ -6,12 +6,12 @@ import Loader from '../Loader/Loader';
 
 const Timer = () => {
     const dispatch = useDispatch();
-    const [timer, setTimer] = useState(60);
+    const [timer, setTimer] = useState(59);
 
     const handleRefresh = () => {
         dispatch(refreshNews());
         dispatch(getNews(1));
-        setTimer(60);
+        setTimer(59);
       };
       const isLoading = useSelector(newsLoading);
 
