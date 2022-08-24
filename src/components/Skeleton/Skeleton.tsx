@@ -3,7 +3,28 @@ import style from './style.module.css';
 
 const Skeleton = () => {
     return (
-        <h1>hi</h1>
+        <>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        <div className={style.skeleton_author}></div>
+        </>
     )
 }
 export default Skeleton;

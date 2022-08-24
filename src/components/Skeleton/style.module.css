@@ -1,0 +1,38 @@
+.skeleton_author {
+  height: 25px;
+  width: 30vw;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: placeholderSkeleton;
+  -webkit-animation-timing-function: linear;
+  background: #f6f7f8;
+  background-image: -webkit-gradient(linear, left center, right center, from(#f6f7f8), color-stop(.2, #edeef1), color-stop(.4, #f6f7f8), to(#f6f7f8));
+  background-image: -webkit-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-repeat: no-repeat;
+  background-size: 800px 104px;
+  margin-bottom: 10px;
+}
+.skeleton_author:nth-child(odd) {
+    width: 12vw
+}
+.skeleton_author:nth-child(even) {
+    margin-bottom: 15px;
+} 
+@-webkit-keyframes placeholderSkeleton {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }
+  
+  @-webkit-keyframes skeletonAnimate {
+    from {
+      background-position: top left;
+    }
+    to {
+      background-position: top right;
+    }
+  }

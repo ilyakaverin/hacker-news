@@ -5,9 +5,10 @@
 :root {
   --light: #F2F3F4;
   --dark-card: #212121;
+  --bg-white: #FFFFFF;
 }
 body {
   font-family: "Source Code Pro", monospace, sans-serif;
-  background-color: var(--light);
+  background-color: var(--bg-white);
 
 }
