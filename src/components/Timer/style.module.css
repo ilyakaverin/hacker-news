@@ -9,5 +9,8 @@
     margin-bottom: 10px;
   }
   .button:hover {
-    filter: opacity(50%);
+    transform: scale(1.01);
+  }
+  .button:disabled {
+    opacity: 50%
   }

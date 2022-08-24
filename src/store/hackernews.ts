@@ -13,11 +13,13 @@ export const slice = createSlice({
     isLoading: null,
     commentsLoading: false,
     nextChunkLoading: false,
+    isDisabledRefresh: false,
     newsIDs: [],
     data: [],
     current: [],
     comments: [],
     error: null,
+    currentNewsChunk: 0,
   },
   reducers: {
     fetchData: (state: State) => ({
@@ -71,6 +73,18 @@ export const slice = createSlice({
       ...state,
       newsIDs: [],
     }),
+    disableRefresh: (state: State) =>({
+      ...state,
+      isDisabledRefresh: true
+    }),
+    enableRefresh: (state: State) =>({
+      ...state,
+      isDisabledRefresh: false
+    }),
+    loadNextChunk: (state: State, action: PayloadAction) =>({
+      ...state,
+      currentNewsChunk: action.payload
+    }),
   },
 });
 
@@ -86,6 +100,9 @@ export const {
   clearNews,
   fetchChunk,
   clearNewsIDs,
+  disableRefresh,
+  enableRefresh,
+  loadNextChunk
 } = slice.actions;
 
 export const newsLoading = (state: HackerNewsState) => state.news.isLoading;
@@ -95,11 +112,15 @@ export const commentsData = (state: HackerNewsState) => state.news.comments;
 export const commentsLoading = (state: HackerNewsState) => state.news.commentsLoading;
 export const newsIDs = (state: HackerNewsState) => state.news.newsIDs;
 export const loadedChunk = (state: HackerNewsState) => state.news.nextChunkLoading;
+export const isDisabledRefresh = (state: HackerNewsState) => state.news.isDisabledRefresh;
+export const currentNewsChunk = (state: HackerNewsState) => state.news.currentNewsChunk;
 
 export const getNews =
-  (id: number) => async (dispatch: Function, getState: Function) => {
+  () => async (dispatch: Function, getState: Function) => {
     dispatch(fetchChunk());
     const hackernewsData = newsIDs(getState());
+    const id = currentNewsChunk(getState());
+
     const result = hackernewsData[id].map(async (id: number) => {
       return await fetch(
         `https://hacker-news.firebaseio.com/v0/item/${id}.json`
@@ -109,12 +130,14 @@ export const getNews =
     promise
       .then((res) => {
         dispatch(fetchNewsResolve(res));
+        dispatch(enableRefresh());
       })
       .catch((e) => dispatch(fetchNewsReject(e)));
   };
 export const refreshNews = () => (dispatch: Function) => {
   dispatch(fetchData());
   dispatch(clearNews());
+
 };
 export const getNewsIDs = () => async (dispatch: Function) => {
   dispatch(fetchData());

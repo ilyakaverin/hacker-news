@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import style from './style.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { getNews, newsLoading, refreshNews } from "../../store/hackernews";
+import { getNews, newsLoading, refreshNews, isDisabledRefresh, disableRefresh, loadNextChunk } from "../../store/hackernews";
 import Loader from '../Loader/Loader';
 
 const Timer = () => {
@@ -9,11 +9,14 @@ const Timer = () => {
     const [timer, setTimer] = useState(59);
 
     const handleRefresh = () => {
+        dispatch(disableRefresh());
         dispatch(refreshNews());
-        dispatch(getNews(1));
+        dispatch(loadNextChunk(0))
+        dispatch(getNews());
         setTimer(59);
       };
       const isLoading = useSelector(newsLoading);
+      const isRefreshDisabled = useSelector(isDisabledRefresh)
 
 
   useEffect(() => {
@@ -32,7 +35,7 @@ const Timer = () => {
   },[timer])
 
     return (
-        <button className={style.button} onClick={() => handleRefresh()}>
+        <button disabled={isRefreshDisabled} className={style.button} onClick={() => handleRefresh()}>
         {isLoading ? <Loader /> : `Refresh ${timer}`}
        </button>
     )

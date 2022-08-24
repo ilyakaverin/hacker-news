@@ -13,11 +13,10 @@
   background-size: 800px 104px;
   margin-bottom: 10px;
 }
-.skeleton_author:nth-child(odd) {
-    width: 12vw
-}
+
 .skeleton_author:nth-child(even) {
     margin-bottom: 15px;
+    width: 12vw
 } 
 @-webkit-keyframes placeholderSkeleton {
     0% {

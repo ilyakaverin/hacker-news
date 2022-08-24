@@ -17,7 +17,9 @@ export interface State {
     current: News;
     comments: Comment[];
     newsIDs: number[][];
-    nextChunkLoading: boolean
+    nextChunkLoading: boolean;
+    isDisabledRefresh: boolean;
+    currentNewsChunk: number;
   }
 interface Comment {
     by: string;

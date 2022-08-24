@@ -9,28 +9,34 @@ import {
   getNewsIDs,
   newsIDs,
   loadedChunk,
+  isDisabledRefresh,
+  disableRefresh,
+  loadNextChunk,
+  currentNewsChunk
 } from "../../store/hackernews";
 import NewsCard from "../NewsCard/NewsCard";
 import cn from "classnames";
 import Timer from '../Timer/Timer';
 import Skeleton from '../Skeleton/Skeleton';
 
-let newsChunk = 1;
 const MainPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(newsLoading);
+  const isRefreshDisabled = useSelector(isDisabledRefresh)
   const newsRedux: Array<object> = useSelector(newsData);
   const newsID = useSelector(newsIDs);
   const isChunkLoading = useSelector(loadedChunk);
+  const currentChunk = useSelector(currentNewsChunk);
   const loadChunk = () => {
-    newsChunk += 1;
-    dispatch(getNews(newsChunk));
+    dispatch(disableRefresh());
+    dispatch(loadNextChunk(currentChunk + 1));
+    dispatch(getNews());
   };
   useEffect(() => {
     dispatch(getNewsIDs());
   }, []);
   useEffect(() => {
-    if (newsID.length > 0) dispatch(getNews(1));
+    if (newsID.length > 0) dispatch(getNews());
   }, [newsID]);
 
   return (
@@ -53,8 +59,9 @@ const MainPage = () => {
  }
       </div>
       <button
+        disabled={isRefreshDisabled}
         className={cn(style.button, {
-          [style.hidden]: isLoading || newsChunk === 8,
+          [style.hidden]: isLoading || Object.keys(newsRedux).length === 100,
         })}
         onClick={() => loadChunk()}
       >
