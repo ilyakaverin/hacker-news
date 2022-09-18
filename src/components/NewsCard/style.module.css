@@ -2,12 +2,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   align-items: flex-start;
+  gap: 0.15rem;
+  margin-bottom: 10px;
+  background-color: #0000a8;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .card .href {
   text-decoration: none;
-  color: #0000a8;
+  color: #ffffff;
   cursor: pointer;
   line-height: 23px;
   letter-spacing: 0.5px;
@@ -17,6 +23,7 @@
 }
 .title {
   line-height: 25px;
+  color: #ffa800;
 }
 .by {
   font-size: 0.8em;
@@ -27,13 +34,13 @@
 }
 .time {
   font-size: 0.8em;
-  color: black
+  color: #a8a8a8;
 }
 .hidden {
   display: none;
 }
 .comments {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 @keyframes fadeInUp {
   from {
