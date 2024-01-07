@@ -2,6 +2,7 @@ import * as style from "./style.module.css";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import dayjs from 'dayjs';
+import React from "react";
 
 
 const newsCard = ({ title, by, date, href, id, descendants }: any) => {

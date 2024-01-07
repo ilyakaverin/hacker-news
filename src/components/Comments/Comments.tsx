@@ -3,6 +3,7 @@ import { useState } from "react";
 import cn from "classnames";
 import Loader from "../Loader/Loader";
 import { processDeletedComments } from "../../service";
+import React from "react";
 
 interface Story {
   text: string;
