@@ -9,6 +9,15 @@ export interface News {
     type: string;
     url: string;
 }
+interface Comment {
+    by: string;
+    id: number;
+    kids: number[];
+    parent: number;
+    text: string;
+    time: number;
+    type: string;
+}
 export interface State {
     name: string;
     data: News[];
@@ -21,12 +30,3 @@ export interface State {
     isDisabledRefresh: boolean;
     currentNewsChunk: number;
   }
-interface Comment {
-    by: string;
-    id: number;
-    kids: number[];
-    parent: number;
-    text: string;
-    time: number;
-    type: string;
-}

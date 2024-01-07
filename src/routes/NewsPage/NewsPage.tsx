@@ -10,11 +10,12 @@ import {
   clearNews,
   clearNewsIDs,
 } from "../../store/hackernews";
-import { format } from "date-fns";
 import * as style from "./style.module.css";
 import { useEffect, useRef } from "react";
 import Loader from "../../components/Loader/Loader";
 import Comment from "../../components/Comments/Comments";
+import dayjs from "dayjs";
+import React from "react";
 
 interface Story {
   id: number;
@@ -32,8 +33,6 @@ const NewsPage = () => {
   const comments = useSelector(commentsData);
   const navigate = useNavigate();
   const ref = useRef(window);
-  const formattedTime = (seconds: number) =>
-    format(new Date(seconds * 1000), "dd MMMM yyyy H:mm");
   const handleClick = () => {
     dispatch(clearNews());
     dispatch(clearCurrent());
@@ -56,7 +55,7 @@ const NewsPage = () => {
       <div className={style.info}>
         <h2>{story?.title}</h2>
         {story.url ? <a href={story?.url}>Link</a> : <></>}
-        <span>{story.time && formattedTime(story.time)}</span>
+        <span>{story.time && dayjs(story.time).format()}</span>
         <span>Total comments {story.descendants}</span>
         <button className={style.button} onClick={handleClick}>
           Back

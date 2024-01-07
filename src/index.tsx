@@ -1,15 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import App from "./App";
-import NewsPage from "./routes/NewsPage/NewsPage";
-import NotFound from "./components/NotFound/NotFound";
-import store from "./store";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import {
+  BrowserRouter, Routes, Route, Navigate,
+} from 'react-router-dom';
+import App from './App';
+import NewsPage from './routes/NewsPage/NewsPage';
+import NotFound from './components/NotFound/NotFound';
+import store from './store';
 
-const app = document.getElementById("app");
+const app = document.getElementById('app');
+const root = createRoot(app);
 
-ReactDOM.render(
+root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
@@ -22,5 +25,4 @@ ReactDOM.render(
       </Routes>
     </BrowserRouter>
   </Provider>,
-  app
 );

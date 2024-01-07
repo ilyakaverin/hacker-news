@@ -1,7 +1,7 @@
 import * as style from "./style.module.css";
-import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import cn from "classnames";
+import dayjs from 'dayjs';
 
 
 const newsCard = ({ title, by, date, href, id, descendants }: any) => {
@@ -13,7 +13,7 @@ const newsCard = ({ title, by, date, href, id, descendants }: any) => {
       </a>
       <div className={style.by}>by {by} 
       <div className={style.time}>
-        {format(new Date(date * 1000), "dd MMMM yyyy H:mm")}
+        {dayjs(date).format()}
       </div>
       <Link
         to={`/story/${id}`}
