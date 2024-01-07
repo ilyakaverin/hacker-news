@@ -4,26 +4,11 @@ import style from './style.module.css';
 const Skeleton = () => {
     return (
         <>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
-        <div className={style.skeleton_author}></div>
+        {
+            [...Array(110)].map(() => ( 
+                <div className={style.skeleton_author}></div>
+            ))
+        }
         </>
     )
 }
