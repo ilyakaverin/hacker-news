@@ -6,3 +6,7 @@
   min-height: calc(100% - 20px);
   margin: 1vw;
 }
+
+h1 {
+  color: var(--light)
+}
