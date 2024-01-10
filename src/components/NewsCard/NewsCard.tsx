@@ -7,6 +7,8 @@ import React from "react";
 
 const newsCard = ({ title, by, date, href, id, descendants }: any) => {
 
+
+  console.log(date)
   return (
     <div className={style.card}>
       <a href={href} className={cn(style.title, {[style.href] : href !== undefined})} target="_blank">
@@ -14,7 +16,8 @@ const newsCard = ({ title, by, date, href, id, descendants }: any) => {
       </a>
       <div className={style.by}>by {by} 
       <div className={style.time}>
-        {dayjs(date).format()}
+        {dayjs.unix(date).format('DD/MM/YYYY')}
+      </div>
       </div>
       <Link
         to={`/story/${id}`}
@@ -22,7 +25,6 @@ const newsCard = ({ title, by, date, href, id, descendants }: any) => {
       >
         Comments
       </Link>
-      </div>
     </div>
   );
 };

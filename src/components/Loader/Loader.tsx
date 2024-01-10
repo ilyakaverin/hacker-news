@@ -1,4 +1,4 @@
-import * as style from "./style.module.css";
+import React from "react";
 
 const Loader = () => {
   return <span>...Loading</span>;

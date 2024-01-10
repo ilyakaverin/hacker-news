@@ -1,14 +1,15 @@
 @font-face {
   font-family: "Source Code Pro";
-  src: url("./assets//Fonts//SourceCodePro-Regular.ttf") format("ttf");
+  src: url("./assets//Fonts/WebPlus_IBM_BIOS.woff") format("woff");
 }
 :root {
-  --light: #F2F3F4;
+  --light: oklch(96.37% 0.002 247.84);
   --dark-card: #212121;
   --bg-white: #FFFFFF;
+  --black: oklch(0% 0 0);
 }
 body {
   font-family: "Source Code Pro", monospace, sans-serif;
-  background-color: var(--bg-white);
+  background-color: var(--black);
 
 }

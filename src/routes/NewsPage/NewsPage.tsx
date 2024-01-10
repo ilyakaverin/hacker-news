@@ -55,7 +55,7 @@ const NewsPage = () => {
       <div className={style.info}>
         <h2>{story?.title}</h2>
         {story.url ? <a href={story?.url}>Link</a> : <></>}
-        <span>{story.time && dayjs(story.time).format()}</span>
+        <span>{story.time && dayjs.unix(story.time).format('DD/MM/YYYY')}</span>
         <span>Total comments {story.descendants}</span>
         <button className={style.button} onClick={handleClick}>
           Back
