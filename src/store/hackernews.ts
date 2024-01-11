@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { sliceIntoChunks } from "../service";
-import { News, State } from '../interfaces';
+import { HackerNewsState, News, State } from '../interfaces';
 import { PayloadAction } from "@reduxjs/toolkit/dist/createAction";
 
-interface HackerNewsState {
-  news: State
-}
+
 
 export const slice = createSlice({
   name: "news",

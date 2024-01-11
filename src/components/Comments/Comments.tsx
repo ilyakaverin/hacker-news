@@ -4,15 +4,11 @@ import cn from "classnames";
 import Loader from "../Loader/Loader";
 import { processDeletedComments } from "../../service";
 import React from "react";
+import { Story } from "../../interfaces";
 
-interface Story {
-  text: string;
-  by: string;
-  kids: Array<number>;
-}
 
 const Comment = ({ text, by, kids }: Story) => {
-  const [comments, setComments] = useState<any[]>([]);
+  const [comments, setComments] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(false);
   const createMarkup = (text: string) => ({ __html: text });
 

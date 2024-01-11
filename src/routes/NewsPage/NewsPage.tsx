@@ -16,13 +16,9 @@ import Loader from "../../components/Loader/Loader";
 import Comment from "../../components/Comments/Comments";
 import dayjs from "dayjs";
 import React from "react";
+import { Story } from "../../interfaces";
 
-interface Story {
-  id: number;
-  text: string;
-  by: string;
-  kids: Array<number>;
-}
+
 
 const NewsPage = () => {
   const params = useParams();
