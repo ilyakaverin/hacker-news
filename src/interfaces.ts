@@ -30,3 +30,13 @@ export interface State {
     isDisabledRefresh: boolean;
     currentNewsChunk: number;
   }
+export interface HackerNewsState {
+    news: State
+  }
+
+  export interface Story {
+    id: number;
+    text: string;
+    by: string;
+    kids: Array<number>;
+  }
