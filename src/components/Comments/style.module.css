@@ -19,17 +19,20 @@
   gap: 10px;
   overflow-wrap: break-word;
   animation: fadeInUp 0.9s;
+  color: var(--light);
 }
 .commentContainer a {
-  color: #0000a8;
+  color: var(--light);
 }
 .commentContainer button {
   background: none;
-  border: 1px solid black;
+  border: 1px solid var(--light);
   border-radius: 5px;
   cursor: pointer;
   padding: 5px;
-  width: 130px;
+  width: 150px;
+  color:inherit;
+  font: inherit;
   height: 50px;
 }
 .container {
@@ -46,6 +49,7 @@
   overflow: hidden;
   margin-bottom: 10px;
   animation: fadeInUp 0.9s;
+  color: var(--light)
 }
 .pressed:after {
   content: "↓";
