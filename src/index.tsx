@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import {
@@ -10,7 +9,7 @@ import NotFound from './components/NotFound/NotFound';
 import store from './store';
 
 const app = document.getElementById('app');
-const root = createRoot(app);
+const root = createRoot(app!);
 
 root.render(
   <Provider store={store}>

@@ -1,13 +1,13 @@
 import * as style from "./style.module.css";
 import { useState } from "react";
 import cn from "classnames";
-import Loader from "../Loader/Loader";
+import Loader from "../Loader";
 import { processDeletedComments } from "../../service";
 import React from "react";
 import { Story } from "../../interfaces";
 
 
-const Comment = ({ text, by, kids }: Story) => {
+const Comment:React.FC<Story> = ({ text, by, kids }) => {
   const [comments, setComments] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(false);
   const createMarkup = (text: string) => ({ __html: text });
@@ -47,11 +47,11 @@ const Comment = ({ text, by, kids }: Story) => {
       </div>
       <div>
         <div className={style.container}>
-          {comments.map((i, index) => (
+          {comments.map((comment: any, index) => (
             <div key={index} className={style.innerContainer}>
-              <p className={style.commentAuthor}>Author: {i.by}</p>
+              <p className={style.commentAuthor}>Author: {comment.by}</p>
               <div
-                dangerouslySetInnerHTML={createMarkup(i.text)}
+                dangerouslySetInnerHTML={createMarkup(comment.text)}
                 className={style.text}
               ></div>
             </div>
