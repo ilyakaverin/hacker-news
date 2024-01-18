@@ -1,7 +1,5 @@
-interface Comment {
-  deleted: boolean;
-  text: string;
-}
+import { IComment } from "./components/Comments/Comments";
+
 export const sliceIntoChunks = (array: number[], chunkSize: number) => {
   const res = [];
   for (let i = 0; i < array.length; i += chunkSize) {
@@ -10,7 +8,7 @@ export const sliceIntoChunks = (array: number[], chunkSize: number) => {
   }
   return res;
 };
-export const processDeletedComments = (object: Comment) => {
+export const processDeletedComments = (object: IComment) => {
   if (object.deleted) {
     object.text = "I deleted my comment";
   }

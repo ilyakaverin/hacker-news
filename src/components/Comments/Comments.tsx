@@ -2,13 +2,13 @@ import * as style from "./style.module.css";
 import { useState } from "react";
 import cn from "classnames";
 import Loader from "../Loader";
-import { processDeletedComments } from "../../service";
 import React from "react";
 import { Story } from "../../interfaces";
 
+export interface IComment { by: string, text: string, deleted: boolean}
 
 const Comment:React.FC<Story> = ({ text, by, kids }) => {
-  const [comments, setComments] = useState<unknown[]>([]);
+  const [comments] = useState([]);
   const [loading, setLoading] = useState(false);
   const createMarkup = (text: string) => ({ __html: text });
 
@@ -20,9 +20,7 @@ const Comment:React.FC<Story> = ({ text, by, kids }) => {
       ).then((res) => res.json());
     });
     const promise = Promise.all(comments);
-    promise.then((res) => {
-      const filtered = res.map(processDeletedComments);
-      setComments(filtered);
+    promise.then(() => {
       setLoading(false);
     });
   };
@@ -47,7 +45,7 @@ const Comment:React.FC<Story> = ({ text, by, kids }) => {
       </div>
       <div>
         <div className={style.container}>
-          {comments.map((comment: any, index) => (
+          {comments.map((comment: IComment , index) => (
             <div key={index} className={style.innerContainer}>
               <p className={style.commentAuthor}>Author: {comment.by}</p>
               <div
