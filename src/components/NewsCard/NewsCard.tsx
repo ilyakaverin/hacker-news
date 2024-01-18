@@ -3,25 +3,30 @@ import { Link } from "react-router-dom";
 import cn from "classnames";
 import dayjs from 'dayjs';
 import React from "react";
+import { useHackerNewsApiGetItemQuery } from "../../api";
+import Skeleton from "../Skeleton/Skeleton";
 
+interface INewsCardProps {
+  id: number
+}
 
-const newsCard = ({ title, by, date, href, id, descendants }: any) => {
+const NewsCard: React.FC<INewsCardProps> = ({ id }) => {
 
+  const { data, isLoading } = useHackerNewsApiGetItemQuery(id);
 
-  console.log(date)
   return (
-    <div className={style.card}>
-      <a href={href} className={cn(style.title, {[style.href] : href !== undefined})} target="_blank">
-        {title}
+    isLoading ? <Skeleton />: <div className={style.card}>
+      <a href={data.url} className={cn(style.title, { [style.href]: data.href !== undefined })} target="_blank">
+        {data.title}
       </a>
-      <div className={style.by}>by {by} 
-      <div className={style.time}>
-        {dayjs.unix(date).format('DD/MM/YYYY')}
-      </div>
+      <div className={style.by}>by {data.by}
+        <div className={style.time}>
+          {dayjs.unix(data.time).format('DD.MM.YYYY')}
+        </div>
       </div>
       <Link
         to={`/story/${id}`}
-        className={cn(style.href, style.comments, { [style.hidden]: !descendants })}
+        className={cn(style.href, style.comments, { [style.hidden]: !data.descendants })}
       >
         Comments
       </Link>
@@ -29,4 +34,4 @@ const newsCard = ({ title, by, date, href, id, descendants }: any) => {
   );
 };
 
-export default newsCard;
+export default NewsCard;

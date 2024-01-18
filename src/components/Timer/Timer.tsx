@@ -1,28 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import style from './style.module.css';
-import { useDispatch, useSelector } from "react-redux";
-import { getNews, newsLoading, refreshNews, isDisabledRefresh, disableRefresh, loadNextChunk } from "../../store/hackernews";
-import Loader from '../Loader/Loader';
+import Loader from '../Loader';
 
-const Timer = () => {
-    const dispatch = useDispatch();
-    const [timer, setTimer] = useState(59);
+interface ITimerProps {
+  onTimeOut: () => void
+  isLoading: boolean
+}
 
-    const handleRefresh = () => {
-        dispatch(disableRefresh());
-        dispatch(refreshNews());
-        dispatch(loadNextChunk(0))
-        dispatch(getNews());
-        setTimer(59);
-      };
-      const isLoading = useSelector(newsLoading);
-      const isRefreshDisabled = useSelector(isDisabledRefresh)
+const Timer: React.FC<ITimerProps> = ({ onTimeOut, isLoading }) => {
 
+  const [timer, setTimer] = useState(59);
+
+  const handleRefresh = useCallback(() => {
+    onTimeOut()
+    setTimer(59);
+  }, [onTimeOut]);
 
   useEffect(() => {
-    if (!isLoading) {
-      const timerid: any =
-        timer > 0 && setInterval(() => setTimer(timer - 1), 1000);
+    if (!isLoading && timer > 0) {
+      const timerid: ReturnType<typeof setInterval> = setInterval(() => setTimer(timer - 1), 1000);
+
       return () => clearInterval(timerid);
     }
 
@@ -30,14 +27,14 @@ const Timer = () => {
 
   useEffect(() => {
     if (timer === 0) {
-        handleRefresh();
-      }
-  },[timer])
+      handleRefresh();
+    }
+  }, [handleRefresh, timer])
 
-    return (
-        <button disabled={isRefreshDisabled} className={style.button} onClick={() => handleRefresh()}>
-        {isLoading ? <Loader /> : `Refresh ${timer}`}
-       </button>
-    )
+  return (
+    <button disabled={isLoading} className={style.button} onClick={handleRefresh}>
+      {isLoading ? <Loader /> : `Refresh ${timer}`}
+    </button>
+  )
 }
 export default Timer

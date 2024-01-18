@@ -1,14 +1,14 @@
 import * as style from "./style.module.css";
 import { useState } from "react";
 import cn from "classnames";
-import Loader from "../Loader/Loader";
-import { processDeletedComments } from "../../service";
+import Loader from "../Loader";
 import React from "react";
 import { Story } from "../../interfaces";
 
+export interface IComment { by: string, text: string, deleted: boolean}
 
-const Comment = ({ text, by, kids }: Story) => {
-  const [comments, setComments] = useState<unknown[]>([]);
+const Comment:React.FC<Story> = ({ text, by, kids }) => {
+  const [comments] = useState([]);
   const [loading, setLoading] = useState(false);
   const createMarkup = (text: string) => ({ __html: text });
 
@@ -20,9 +20,7 @@ const Comment = ({ text, by, kids }: Story) => {
       ).then((res) => res.json());
     });
     const promise = Promise.all(comments);
-    promise.then((res) => {
-      const filtered = res.map(processDeletedComments);
-      setComments(filtered);
+    promise.then(() => {
       setLoading(false);
     });
   };
@@ -47,11 +45,11 @@ const Comment = ({ text, by, kids }: Story) => {
       </div>
       <div>
         <div className={style.container}>
-          {comments.map((i, index) => (
+          {comments.map((comment: IComment , index) => (
             <div key={index} className={style.innerContainer}>
-              <p className={style.commentAuthor}>Author: {i.by}</p>
+              <p className={style.commentAuthor}>Author: {comment.by}</p>
               <div
-                dangerouslySetInnerHTML={createMarkup(i.text)}
+                dangerouslySetInnerHTML={createMarkup(comment.text)}
                 className={style.text}
               ></div>
             </div>
