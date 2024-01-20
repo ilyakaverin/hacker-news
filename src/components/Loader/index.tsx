@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import * as style from './style.module.css';
 
 const Loader: React.FC = () => {

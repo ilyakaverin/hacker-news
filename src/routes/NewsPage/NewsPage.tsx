@@ -1,13 +1,14 @@
-import { useParams, useNavigate } from "react-router-dom";
-import * as style from "./style.module.css";
-import Loader from "../../components/Loader";
-import dayjs from "dayjs";
-import { useHackerNewsApiGetItemQuery } from "../../api";
+import { useParams, useNavigate } from 'react-router-dom';
+import * as style from './style.module.css';
+import Loader from '../../components/Loader';
+import dayjs from 'dayjs';
+import { useHackerNewsApiGetItemQuery } from '../../api';
+import Comment from '../../components/Comments/Comments';
 
 const NewsPage: React.FC = () => {
   const params = useParams();
   const id = Number(params.storyId);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { data: story, isFetching: isLoading, refetch } = useHackerNewsApiGetItemQuery(id);
 
@@ -21,10 +22,7 @@ const NewsPage: React.FC = () => {
         <button className={style.button} onClick={() => navigate('/')}>
           Back
         </button>
-        <button
-          className={style.button}
-          onClick={refetch}
-        >
+        <button className={style.button} onClick={refetch}>
           Refresh
         </button>
       </div>
@@ -32,10 +30,8 @@ const NewsPage: React.FC = () => {
         <div className={style.loading}>
           <Loader />
         </div>
-      ) : ( <Loader />
-        // comments.map((i: Story, index: number) => (
-        //   <Comment key={index} text={i.text} by={i.by} kids={i.kids} />
-        // ))
+      ) : (
+        story.kids.map((id: number, index: number) => <Comment key={index} id={id} />)
       )}
     </div>
   );

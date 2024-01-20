@@ -1,12 +1,12 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const NotFound: React.FC = () => {
   const navigate = useNavigate();
   return (
     <>
       <h2>There is nothing here!</h2>
-      <button onClick={() => navigate("/")}>Back to Main</button>
+      <button onClick={() => navigate('/')}>Back to Main</button>
     </>
   );
 };

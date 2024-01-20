@@ -3,16 +3,15 @@ import style from './style.module.css';
 import Loader from '../Loader';
 
 interface ITimerProps {
-  onTimeOut: () => void
-  isLoading: boolean
+  onTimeOut: () => void;
+  isLoading: boolean;
 }
 
 const Timer: React.FC<ITimerProps> = ({ onTimeOut, isLoading }) => {
-
   const [timer, setTimer] = useState(59);
 
   const handleRefresh = useCallback(() => {
-    onTimeOut()
+    onTimeOut();
     setTimer(59);
   }, [onTimeOut]);
 
@@ -22,19 +21,18 @@ const Timer: React.FC<ITimerProps> = ({ onTimeOut, isLoading }) => {
 
       return () => clearInterval(timerid);
     }
-
   }, [timer, isLoading]);
 
   useEffect(() => {
     if (timer === 0) {
       handleRefresh();
     }
-  }, [handleRefresh, timer])
+  }, [handleRefresh, timer]);
 
   return (
     <button disabled={isLoading} className={style.button} onClick={handleRefresh}>
       {isLoading ? <Loader /> : `Refresh ${timer}`}
     </button>
-  )
-}
-export default Timer
+  );
+};
+export default Timer;
