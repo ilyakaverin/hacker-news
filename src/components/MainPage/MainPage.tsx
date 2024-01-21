@@ -6,11 +6,11 @@ import Timer from '../Timer/Timer';
 import Skeleton from '../Skeleton/Skeleton';
 import { useHackerNewsApiBestStoriesQuery } from '../../api';
 import { useDispatch, useSelector } from 'react-redux';
-import { setData, showMore } from '../../store/hackernews-stories';
+import { IStore, setData, showMore } from '../../store/hackernews-stories';
 
 const MainPage: React.FC = () => {
   const dispatch = useDispatch();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState<number>(0);
 
   const { data, isFetching: isLoading, refetch } = useHackerNewsApiBestStoriesQuery({ order: 'key', limit: '100' });
 
@@ -18,17 +18,15 @@ const MainPage: React.FC = () => {
     if (data) dispatch(setData(data));
   }, [data, dispatch]);
 
-  const stories = useSelector(state => state.stories.currentStories);
-  const allStories = useSelector(state => state.stories.allStories);
-
-  console.log(stories);
+  const stories = useSelector((state: IStore) => state.stories.currentStories);
+  const allStories = useSelector((state: IStore) => state.stories.allStories);
 
   const handleClick = () => {
-    const currentCount = count + 1;
-    const correntStories = [...stories, ...allStories[currentCount]];
+    const currentCount: number = count + 1;
+    const currentStories: number[] = [...stories, ...allStories[currentCount]];
 
     setCount(currentCount);
-    dispatch(showMore(correntStories));
+    dispatch(showMore(currentStories));
   };
 
   return (
