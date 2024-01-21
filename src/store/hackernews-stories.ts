@@ -1,8 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface IStore {
+export interface IState {
   currentStories: number[];
-  allStories: number[];
+  allStories: number[][];
+}
+
+export interface IStore {
+  stories: IState;
 }
 
 const dataSlice = createSlice({
@@ -12,7 +16,7 @@ const dataSlice = createSlice({
     allStories: [],
   },
   reducers: {
-    setData: (state: IStore, action) => ({
+    setData: (state: IState, action) => ({
       ...state,
       currentStories: action.payload[0],
       allStories: action.payload,
