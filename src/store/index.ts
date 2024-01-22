@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { hackerNewsApi } from '../api';
+import { hackerNewsApi } from 'api';
 import dataReducer from './hackernews-stories';
 
 const store = configureStore({

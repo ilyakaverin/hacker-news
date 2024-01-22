@@ -1,9 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import * as style from './style.module.css';
-import Loader from '../../components/Loader';
+import Loader from 'components/loader';
 import dayjs from 'dayjs';
-import { useHackerNewsApiGetItemQuery } from '../../api';
-import Comment from '../../components/Comments/Comments';
+import { useHackerNewsApiGetItemQuery } from 'api';
+import Comment from 'components/comment';
 
 const NewsPage: React.FC = () => {
   const params = useParams();

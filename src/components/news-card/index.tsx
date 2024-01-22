@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import dayjs from 'dayjs';
 import React from 'react';
-import { useHackerNewsApiGetItemQuery } from '../../api';
-import Skeleton from '../Skeleton/Skeleton';
+import { useHackerNewsApiGetItemQuery } from 'api';
+import Skeleton from 'components/skeleton';
 interface INewsCardProps {
   id: number;
 }

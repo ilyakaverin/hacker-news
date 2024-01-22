@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import style from './style.module.css';
-import Loader from '../Loader';
+import Loader from 'components/loader';
 
 interface ITimerProps {
   onTimeOut: () => void;

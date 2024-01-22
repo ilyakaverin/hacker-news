@@ -1,5 +1,5 @@
 import React from 'react';
-import MainPage from './components/MainPage/MainPage';
+import MainPage from 'routes/main-page';
 import * as style from './App.module.css';
 
 const App: React.FC = () => {

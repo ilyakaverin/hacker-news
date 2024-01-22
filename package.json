@@ -1,6 +1,6 @@
 {
   "name": "hacker-news",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "best stories with infinite lvl of comments",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "source": "./src/index.html",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/ilyakaverin/dev#readme",
   "devDependencies": {
+    "@types/node": "^20.11.5",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@types/react-redux": "^7.1.33",
@@ -44,7 +45,6 @@
     "@reduxjs/toolkit": "^2.0.1",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.10",
-    "nanoid": "^5.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^7.2.9",
