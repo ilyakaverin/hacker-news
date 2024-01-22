@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import * as style from './style.module.css';
-import NewsCard from '../NewsCard/NewsCard';
+import NewsCard from 'components/news-card';
 import cn from 'classnames';
-import Timer from '../Timer/Timer';
-import Skeleton from '../Skeleton/Skeleton';
-import { useHackerNewsApiBestStoriesQuery } from '../../api';
+import Timer from 'components/timer';
+import Skeleton from 'components/skeleton';
+import { useHackerNewsApiBestStoriesQuery } from 'api';
 import { useDispatch, useSelector } from 'react-redux';
-import { IStore, setData, showMore } from '../../store/hackernews-stories';
+import { IStore, setData, showMore } from 'store/hackernews-stories';
 
 const MainPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -32,9 +32,7 @@ const MainPage: React.FC = () => {
   return (
     <div className={style.container}>
       <Timer onTimeOut={refetch} isLoading={isLoading} />
-      <div className={style.news}>
-        {isLoading ? <Skeleton /> : stories.map((id: number, index: number) => <NewsCard key={index} id={id} />)}
-      </div>
+      <div className={style.news}>{isLoading ? <Skeleton /> : stories.map((id: number) => <NewsCard key={id} id={id} />)}</div>
       <button
         disabled={count === allStories.length - 1}
         className={cn(style.button, {

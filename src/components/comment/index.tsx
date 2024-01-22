@@ -1,8 +1,8 @@
 import * as style from './style.module.css';
 import cn from 'classnames';
 import React, { useState } from 'react';
-import { useHackerNewsApiGetItemQuery } from '../../api';
-import { createMarkup } from '../../service';
+import { useHackerNewsApiGetItemQuery } from 'api';
+import { createMarkup } from 'service';
 
 export interface IComment {
   by: string;
