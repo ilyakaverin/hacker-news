@@ -15,7 +15,10 @@ const MainPage: React.FC = () => {
   const { data, isFetching: isLoading, refetch } = useHackerNewsApiBestStoriesQuery({ order: 'key', limit: '100' });
 
   useEffect(() => {
-    if (data) dispatch(setData(data));
+    if (data) {
+      setCount(0);
+      dispatch(setData(data));
+    }
   }, [data, dispatch]);
 
   const stories = useSelector((state: IStore) => state.stories.currentStories);
