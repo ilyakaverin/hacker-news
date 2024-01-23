@@ -16,4 +16,6 @@ V2
 
 migrated to pnpm, vite
 
-[Deployed on Vercel](https://seeuspacecowboy.vercel.app/)
+added rtk query, refactored all components and design
+
+[Deployed on Vercel](https://cowboynews.vercel.app/)
