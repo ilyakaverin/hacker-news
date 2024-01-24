@@ -4,6 +4,7 @@ import Loader from 'components/loader';
 import dayjs from 'dayjs';
 import { useHackerNewsApiGetItemQuery } from 'api';
 import Comment from 'components/comment';
+import { useEffect } from 'react';
 
 const NewsPage: React.FC = () => {
   const params = useParams();
@@ -11,6 +12,10 @@ const NewsPage: React.FC = () => {
   const navigate = useNavigate();
 
   const { data: story, isFetching: isLoading, refetch } = useHackerNewsApiGetItemQuery(id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={style.container}>
