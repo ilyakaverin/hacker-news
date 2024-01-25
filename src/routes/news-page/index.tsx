@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { useHackerNewsApiGetItemQuery } from 'api';
 import Comment from 'components/comment';
 import { useEffect } from 'react';
+import { Button } from 'components/atomic/button';
 
 const NewsPage: React.FC = () => {
   const params = useParams();
@@ -24,12 +25,8 @@ const NewsPage: React.FC = () => {
         {story?.url ? <a href={story?.url}>Link</a> : <></>}
         <span>{story?.time && dayjs.unix(story?.time).format('DD/MM/YYYY')}</span>
         <span>Total comments {story?.descendants}</span>
-        <button className={style.button} onClick={() => navigate('/')}>
-          Back
-        </button>
-        <button className={style.button} onClick={refetch}>
-          Refresh
-        </button>
+        <Button text={'Back'} onClick={() => navigate('/')} />
+        <Button text={'Refresh'} onClick={refetch} />
       </div>
       {isLoading ? (
         <div className={style.loading}>

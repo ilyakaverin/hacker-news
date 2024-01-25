@@ -7,6 +7,7 @@ import Skeleton from 'components/skeleton';
 import { useHackerNewsApiBestStoriesQuery } from 'api';
 import { useDispatch, useSelector } from 'react-redux';
 import { IStore, setData, showMore } from 'store/hackernews-stories';
+import { Button } from 'components/atomic/button';
 
 const MainPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -36,15 +37,7 @@ const MainPage: React.FC = () => {
     <div className={style.container}>
       <Timer onTimeOut={refetch} isLoading={isLoading} />
       <div className={style.news}>{isLoading ? <Skeleton /> : stories.map((id: number) => <NewsCard key={id} id={id} />)}</div>
-      <button
-        disabled={count === allStories.length - 1}
-        className={cn(style.button, {
-          [style.hidden]: isLoading,
-        })}
-        onClick={handleClick}
-      >
-        More
-      </button>
+      <Button text={'More'} disabled={count === allStories.length - 1} onClick={handleClick} isLoading={isLoading} />
     </div>
   );
 };
