@@ -1,8 +1,8 @@
 import * as style from './style.module.css';
-import cn from 'classnames';
 import React, { useState } from 'react';
 import { useHackerNewsApiGetItemQuery } from 'api';
 import { createMarkup } from 'service';
+import { Button } from 'components/atomic/button';
 
 export interface IComment {
   by: string;
@@ -18,7 +18,16 @@ const Comment: React.FC<ICommentProps> = ({ id }) => {
 
   const [visible, setVisible] = useState(false);
 
+  const handleClick =
+    comment.kids?.length > 0
+      ? () => {
+          setVisible(prevState => !prevState);
+        }
+      : () => {};
+
   if (comment.deleted) return null;
+
+  const isHiddenButton = comment.kids === undefined || comment.kids.length === 0;
 
   return (
     <>
@@ -26,20 +35,15 @@ const Comment: React.FC<ICommentProps> = ({ id }) => {
         <p className={style.commentAuthor}>Author: {comment.by}</p>
         <div dangerouslySetInnerHTML={createMarkup(comment.text)} className={style.text}></div>
         {comment.kids?.length > 0 && (
-          <button
-            className={cn({
-              [style.hidden]: comment.kids === undefined || comment.kids.length === 0,
-            })}
-            onClick={
-              comment.kids?.length > 0
-                ? () => {
-                    setVisible(prevState => !prevState);
-                  }
-                : undefined
+          <Button onClick={handleClick} className={isHiddenButton ? style.hidden : ''}>
+            Comments
+            {
+              <>
+                <span>{comment.kids?.length}</span>
+                <span>{visible ? '↑' : '↓'}</span>
+              </>
             }
-          >
-            <span>Comments {comment.kids?.length}</span> <span>{visible ? '↑' : '↓'}</span>
-          </button>
+          </Button>
         )}
       </div>
       <div>

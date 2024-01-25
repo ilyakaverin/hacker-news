@@ -4,8 +4,14 @@
     padding: 15px;
     cursor: pointer;
     background: none;
-    width: 200px;
     animation: fadeIn 0.5s;
     color: var(--light);
-    font: inherit
+    font: inherit;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .disabled {
+    opacity: 50%;
   }

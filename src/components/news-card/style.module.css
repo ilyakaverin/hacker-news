@@ -25,7 +25,7 @@
 }
 .by {
   font-size: 0.8em;
-  color: #a80000;
+  color: var(--red);
   display: flex;
   gap: 15px;
   align-items: center;

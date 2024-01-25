@@ -25,8 +25,8 @@ const NewsPage: React.FC = () => {
         {story?.url ? <a href={story?.url}>Link</a> : <></>}
         <span>{story?.time && dayjs.unix(story?.time).format('DD/MM/YYYY')}</span>
         <span>Total comments {story?.descendants}</span>
-        <Button text={'Back'} onClick={() => navigate('/')} />
-        <Button text={'Refresh'} onClick={refetch} />
+        <Button onClick={() => navigate('/')}>Back</Button>
+        <Button onClick={refetch}>Refresh</Button>
       </div>
       {isLoading ? (
         <div className={style.loading}>
