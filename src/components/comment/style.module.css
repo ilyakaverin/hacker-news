@@ -5,13 +5,12 @@
 }
 .commentAuthor {
   font-size: 0.7em;
-  color: #a80000;
+  color: var(--red);
 }
 .commentContainer {
   margin: 35px;
   margin-bottom: 15px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  border: 1px solid #cacaca;
+  border: 1px solid var(--light);
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -24,19 +23,7 @@
 .commentContainer a {
   color: var(--light);
 }
-.commentContainer button {
-  background: none;
-  border: 1px solid var(--light);
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 10px;
-  min-width: 150px;
-  color:inherit;
-  font: inherit;
-  height: 50px;
-  display: flex;
-  align-items: center;
-}
+
 .container {
   display: grid;
   grid-template-columns: calc(100% - 50px);
@@ -44,8 +31,6 @@
 .innerContainer {
   margin-left: 55px;
   padding: 15px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   box-sizing: border-box;
   width: 90%;
   overflow: hidden;

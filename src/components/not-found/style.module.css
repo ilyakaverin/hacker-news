@@ -1,0 +1,50 @@
+.notFound_container {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+div.tardis {
+    animation: rematerialize 3s 3 alternate ease-in-out;
+    display: block;
+    position: relative;
+    transition: opacity 3s ease-in-out;
+    width: fit-content;
+  }
+  div.tardis:hover {
+    animation: materialize 3s 3 alternate ease-in-out;
+    opacity: 0;
+  }
+  div.tardis::before {
+    animation: materialize 2s infinite alternate ease-in-out;
+    background-color: goldenrod;
+    content: "";
+    height: 54px;
+    position: absolute;
+    top: 13px;
+    left: 122px;
+    width: 56px;
+  }
+  div.tardis img.tardis {
+    display: block;
+    margin: 0 auto;
+  }
+
+  @keyframes materialize {
+    0% {
+      opacity: 100%;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes rematerialize {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }

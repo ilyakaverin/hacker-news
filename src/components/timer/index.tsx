@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import style from './style.module.css';
 import Loader from 'components/loader';
+import { Button } from 'components/atomic/button';
 
 interface ITimerProps {
   onTimeOut: () => void;
@@ -30,9 +30,9 @@ const Timer: React.FC<ITimerProps> = ({ onTimeOut, isLoading }) => {
   }, [handleRefresh, timer]);
 
   return (
-    <button disabled={isLoading} className={style.button} onClick={handleRefresh}>
+    <Button disabled={isLoading} onClick={handleRefresh}>
       {isLoading ? <Loader /> : `Refresh ${timer}`}
-    </button>
+    </Button>
   );
 };
 export default Timer;

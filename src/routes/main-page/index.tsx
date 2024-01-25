@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as style from './style.module.css';
 import NewsCard from 'components/news-card';
-import cn from 'classnames';
 import Timer from 'components/timer';
 import Skeleton from 'components/skeleton';
 import { useHackerNewsApiBestStoriesQuery } from 'api';
@@ -37,7 +36,9 @@ const MainPage: React.FC = () => {
     <div className={style.container}>
       <Timer onTimeOut={refetch} isLoading={isLoading} />
       <div className={style.news}>{isLoading ? <Skeleton /> : stories.map((id: number) => <NewsCard key={id} id={id} />)}</div>
-      <Button text={'More'} disabled={count === allStories.length - 1} onClick={handleClick} isLoading={isLoading} />
+      <Button disabled={count === allStories.length - 1} onClick={handleClick} isLoading={isLoading}>
+        More
+      </Button>
     </div>
   );
 };

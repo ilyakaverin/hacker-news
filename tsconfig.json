@@ -26,7 +26,8 @@
       "service/*": ["./service/*"],
       "components/*": ["./components/*"],
       "store/*": ["./store/*"],
-      "routes/*": ["./routes/*"]
+      "routes/*": ["./routes/*"],
+      "assets/*": ["./assets/*"]
 
     },
   },
