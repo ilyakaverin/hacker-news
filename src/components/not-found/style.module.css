@@ -19,7 +19,7 @@ div.tardis {
   }
   div.tardis::before {
     animation: materialize 2s infinite alternate ease-in-out;
-    background-color: goldenrod;
+    background-color: var(--orange);
     content: "";
     height: 54px;
     position: absolute;
