@@ -5,13 +5,12 @@
   font-size: 0.9rem;
   align-items: flex-start;
   margin-bottom: 10px;
-  background-color: #0000a8;
+  background-color: var(--blue);
   padding: 15px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .card .href {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--white);
   cursor: pointer;
   line-height: 23px;
   letter-spacing: 0.5px;
@@ -21,7 +20,7 @@
 }
 .title {
   line-height: 25px;
-  color: #ffa800;
+  color: var(--orange);
 }
 .by {
   font-size: 0.8em;
@@ -32,7 +31,7 @@
 }
 .time {
   font-size: 0.8em;
-  color: #a8a8a8;
+  color: var(--gray);
 }
 .hidden {
   display: none;
