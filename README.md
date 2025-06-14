@@ -1,11 +1,11 @@
-# Hacker-news-implementation
+# Svelte learning
 
 ```
 pnpm install
 ```
 
 ```
-pnpm run dev
+pnpm dev
 ```
 
 Developer build will be served on localhost:3000
@@ -16,6 +16,10 @@ V2
 
 migrated to pnpm, vite
 
-added rtk query, refactored all components and design
+added rtk query, refactored all components and design;
 
-[Deployed on Vercel](https://cowboynews.vercel.app/)
+
+V3
+
+migrate to svelte, evaporated old project
+
